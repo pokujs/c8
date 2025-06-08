@@ -1,0 +1,30 @@
+{
+  "include": ["src"],
+  "exclude": ["test", "tools"],
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020"],
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "outDir": "lib",
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "allowJs": false,
+    "strict": true,
+    "alwaysStrict": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noImplicitAny": true,
+    "removeComments": false,
+    "sourceMap": false,
+    "esModuleInterop": true,
+    "noEmitOnError": true,
+    "declaration": true,
+    "declarationDir": "lib",
+    "allowSyntheticDefaultImports": true
+  }
+}

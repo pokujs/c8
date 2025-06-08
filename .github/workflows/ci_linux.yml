@@ -1,0 +1,71 @@
+name: '🐧 CI — Coverage'
+
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    paths:
+      - '.github/workflows/ci_coverage-linux.yml'
+      - 'src/**'
+      - 'test/**'
+      - 'tools/**'
+      - 'package-lock.json'
+      - 'package.json'
+  workflow_dispatch:
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+    name: Linux
+    steps:
+      - name: ➕ Actions - Checkout
+        uses: actions/checkout@v4
+
+      - name: ➕ Actions - Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+
+      - name: ➕ Actions - Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.1.22'
+
+      - name: ➕ Actions - Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: 'v1.x'
+
+      # - name: 🐳 Update Docker to latest version
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get -y install ca-certificates curl gnupg lsb-release
+      #     sudo mkdir -p /etc/apt/keyrings
+      #     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+      #     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+      #     sudo apt-get update
+      #     sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+      #     sudo systemctl restart docker
+      #     sudo usermod -aG docker $USER
+
+      - name: ➕ Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-linux-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-linux-
+
+      - name: 🧬 Debug
+        run: |
+          docker --version
+          docker compose version
+
+      - name: 📦 Installing Dependencies
+        run: npm ci
+
+      - name: 🧪 Checking for Coverage
+        run: npm run test

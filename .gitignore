@@ -1,0 +1,13 @@
+.DS_Store
+.env
+.nycrc.json
+
+/lib/
+/ci/
+/playground/
+/coverage/
+/test/__fixtures__/.temp/
+
+node_modules/
+
+!/test/__fixtures__/e2e/env/.env

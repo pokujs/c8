@@ -1,0 +1,8 @@
+/lib
+/ci
+/CHANGELOG.md
+/website
+/test/__fixtures__/e2e/sintax
+/.nycrc.json
+/benchmark/results
+/benchmark/output.md
