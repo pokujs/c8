@@ -1,4 +1,4 @@
-name: '🍎 CI — Coverage'
+name: '🍎 CI — OSX'
 
 on:
   push:
@@ -40,5 +40,5 @@ jobs:
       - name: 📦 Installing Dependencies
         run: npm ci
 
-      - name: 🧪 Checking for Coverage
-        run: npm run test
+      - name: 🧪 Testing
+        run: npm test
