@@ -87,6 +87,16 @@
           }
         }
       }
+    },
+    {
+      "include": ["src/globals.d.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noDefaultExport": "off"
+          }
+        }
+      }
     }
   ]
 }
