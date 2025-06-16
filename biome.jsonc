@@ -64,8 +64,7 @@
         "useNamingConvention": "off",
         "useNodeAssertStrict": "off",
         "noNamespaceImport": "off",
-        "useBlockStatements": "off",
-        "noDefaultExport": "off"
+        "useBlockStatements": "off"
       }
     }
   },
@@ -85,6 +84,16 @@
           },
           "nursery": {
             "noTemplateCurlyInString": "off"
+          }
+        }
+      }
+    },
+    {
+      "include": ["src/globals.d.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noDefaultExport": "off"
           }
         }
       }
