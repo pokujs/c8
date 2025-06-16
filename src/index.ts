@@ -1,1 +1,1 @@
-export const wip = () => {};
+export * from './coverage';

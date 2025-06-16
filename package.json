@@ -1,7 +1,7 @@
 {
   "name": "@pokujs/c8",
   "private": false,
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "☔️ Facilitator utility for coverage with c8 using Poku.",
   "main": "./lib/index.js",
   "license": "MIT",
@@ -34,6 +34,9 @@
   },
   "dependencies": {
     "c8": "^10.1.3"
+  },
+  "peerDependencies": {
+    "poku": ">=3.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
