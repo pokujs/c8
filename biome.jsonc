@@ -64,7 +64,8 @@
         "useNamingConvention": "off",
         "useNodeAssertStrict": "off",
         "noNamespaceImport": "off",
-        "useBlockStatements": "off"
+        "useBlockStatements": "off",
+        "noDefaultExport": "off"
       }
     }
   },
