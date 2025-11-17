@@ -39,7 +39,7 @@
     "poku": ">=3.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.3.5",
     "@ianvs/prettier-plugin-sort-imports": "^4.4.2",
     "@types/node": "^24.0.2",
     "packages-update": "^2.0.0",
