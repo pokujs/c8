@@ -1,37 +1,163 @@
-## @pokujs/c8
+<div align="center">
+<img height="180" alt="Poku's Logo" src="https://raw.githubusercontent.com/wellwelwel/poku/main/.github/assets/readme/poku.svg">
 
-☔️ Facilitator utility for coverage with [**c8**](https://github.com/bcoe/c8) using [**Poku**](https://github.com/wellwelwel/poku).
+# @pokujs/c8
+
+Enjoying **Poku**? [Give him a star to show your support](https://github.com/wellwelwel/poku) ⭐
+
+</div>
+
+---
+
+☔️ [**@pokujs/c8**](https://github.com/pokujs/c8) is a **Poku** plugin for **V8** code coverage using [**c8**](https://github.com/bcoe/c8).
+
+---
+
+## Quickstart
+
+### Install
+
+```bash
+npm i -D @pokujs/c8
+```
+
+### Enable the Plugin
+
+```js
+// poku.config.js
+import { coverage } from '@pokujs/c8';
+import { defineConfig } from 'poku';
+
+export default defineConfig({
+  plugins: [coverage()],
+});
+```
+
+That's it! Run `poku` and a coverage summary will be printed after your test results.
 
 > [!IMPORTANT]
 >
-> WIP 🚧
->
-> - https://github.com/wellwelwel/poku/pull/996
+> This plugin relies on **Node.js**' built-in `NODE_V8_COVERAGE` environment variable to collect coverage data. **Bun** and **Deno** do not support this mechanism, so coverage data will not be collected when running tests with these runtimes.
 
-### Installation
+---
 
-```sh
-npm i -D poku @pokujs/c8
+## Options
+
+```js
+coverage({
+  // Reporters
+  reporter: ['text', 'lcov'], // default: ['text']
+
+  // File selection
+  include: ['src/**'], // default: [] (all files)
+  exclude: ['**/*.test.ts'], // default: c8 defaults
+  extension: ['.ts', '.js'], // default: c8 defaults
+
+  // Thresholds
+  checkCoverage: true, // default: false
+  lines: 80, // default: 0
+  branches: 80, // default: 0
+  functions: 80, // default: 0
+  statements: 80, // default: 0
+  perFile: false, // default: false
+
+  // Include untested files
+  all: true, // default: false
+  src: ['src'], // default: [cwd]
+
+  // Experimental
+  experimental: ['monocart'], // default: []
+
+  // Output
+  reportsDirectory: './coverage', // default: './coverage'
+  skipFull: false, // default: false
+
+  // Advanced
+  excludeAfterRemap: false, // default: false
+  mergeAsync: false, // default: false
+  clean: true, // default: true
+});
 ```
 
-### Usage
+---
 
-#### — NPX
+## Examples
 
-```sh
-npx poku --coverage=c8
+### Basic text coverage
+
+```js
+coverage({
+  include: ['src/**'],
+});
 ```
 
-#### — package.json
+### Generate HTML and LCOV reports
 
-```json
-{
-  "scripts": {
-    "test": "poku --coverage=c8"
-  }
-}
+```js
+coverage({
+  include: ['src/**'],
+  reporter: ['text', 'html', 'lcov'],
+});
 ```
 
-```sh
-npm test
+### Enforce coverage thresholds
+
+Set a single threshold for all metrics at once by passing a `number`:
+
+```js
+coverage({
+  include: ['src/**'],
+  checkCoverage: 100,
+});
 ```
+
+Or use `true` to set individual thresholds for each metric:
+
+```js
+coverage({
+  include: ['src/**'],
+  checkCoverage: true,
+  lines: 95,
+  branches: 90,
+  functions: 85,
+  statements: 95,
+});
+```
+
+### TypeScript coverage
+
+```js
+coverage({
+  include: ['src/**'],
+  extension: ['.ts'],
+  all: true,
+});
+```
+
+### Extending Monocart reporters
+
+```bash
+npm i -D monocart-coverage-reports
+```
+
+```js
+coverage({
+  include: ['src/**'],
+  reporter: ['v8', 'console-details', 'codecov'],
+  experimental: ['monocart'],
+});
+```
+
+---
+
+## How It Works
+
+- **`setup`** creates a temp directory and sets `NODE_V8_COVERAGE` — every test process spawned by **Poku** automatically writes **V8** coverage data
+- **`teardown`** uses **c8** to generate reports from the collected data, optionally checks thresholds, then cleans up
+- No modification to test commands or runner configuration needed
+
+---
+
+## License
+
+**MIT** © [**wellwelwel**](https://github.com/wellwelwel) and [**contributors**](https://github.com/pokujs/c8/graphs/contributors).
