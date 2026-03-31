@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/pokujs/c8/compare/v1.0.0...v1.0.1) (2026-03-31)
+
+
+### Bug Fixes
+
+* **docs:** add DevJoaoLopes to sponsors ([#78](https://github.com/pokujs/c8/issues/78)) ([898c7a7](https://github.com/pokujs/c8/commit/898c7a74d8a1e501bfa51dfc74a0a1b39c47f679))
+
 ## 1.0.0 (2026-03-31)
 
 
