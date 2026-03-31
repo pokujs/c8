@@ -11,10 +11,6 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/wel
 
 ☔️ [**@pokujs/c8**](https://github.com/pokujs/c8) is a **Poku** plugin for **V8** code coverage using [**c8**](https://github.com/bcoe/c8).
 
-> [!TIP]
->
-> Zero-config coverage reports for your test suite.
-
 ---
 
 ## Quickstart
@@ -164,4 +160,4 @@ coverage({
 
 ## License
 
-MIT © [**wellwelwel**](https://github.com/wellwelwel)
+**MIT** © [**wellwelwel**](https://github.com/wellwelwel) and [**contributors**](https://github.com/pokujs/c8/graphs/contributors).
