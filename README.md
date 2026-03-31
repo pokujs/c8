@@ -106,13 +106,24 @@ coverage({
 
 ### Enforce coverage thresholds
 
+Set a single threshold for all metrics at once by passing a `number`:
+
+```js
+coverage({
+  include: ['src/**'],
+  checkCoverage: 100,
+});
+```
+
+Or use `true` to set individual thresholds for each metric:
+
 ```js
 coverage({
   include: ['src/**'],
   checkCoverage: true,
   lines: 95,
-  branches: 95,
-  functions: 95,
+  branches: 90,
+  functions: 85,
   statements: 95,
 });
 ```
@@ -153,4 +164,4 @@ coverage({
 
 ## License
 
-MIT © [wellwelwel](https://github.com/wellwelwel)
+MIT © [**wellwelwel**](https://github.com/wellwelwel)
