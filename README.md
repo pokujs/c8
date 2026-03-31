@@ -9,6 +9,12 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/wel
 
 ---
 
+📚 [**Documentation**](https://poku.io/docs/documentation/helpers/coverage/c8)
+
+</div>
+
+---
+
 ☔️ [**@pokujs/c8**](https://github.com/pokujs/c8) is a **Poku** plugin for **V8** code coverage using [**c8**](https://github.com/bcoe/c8).
 
 ---
