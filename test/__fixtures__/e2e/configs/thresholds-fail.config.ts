@@ -7,11 +7,7 @@ export default defineConfig({
     coverage({
       include: ['src/**'],
       reporter: ['text'],
-      checkCoverage: true,
-      lines: 100,
-      branches: 100,
-      functions: 100,
-      statements: 100,
+      checkCoverage: 100,
     }),
   ],
 });
