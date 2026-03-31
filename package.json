@@ -25,7 +25,7 @@
     "node": ">=18.x.x"
   },
   "scripts": {
-    "test": "poku -c=poku.config.mts",
+    "test": "poku test/e2e",
     "prebuild": "rm -rf lib",
     "build": "tsc",
     "lint": "prettier --check .",
