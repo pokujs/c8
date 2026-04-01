@@ -1,6 +1,6 @@
 import type { PokuPlugin } from 'poku/plugins';
 import type { CoverageOptions } from './types.js';
-import { mkdtempSync, rmSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import process from 'node:process';
@@ -29,6 +29,16 @@ export const coverage = (
       tempDir = userProvidedTempDir
         ? options.tempDirectory!
         : mkdtempSync(join(tmpdir(), 'poku-c8-'));
+
+      if (options.clean !== false) {
+        try {
+          rmSync(tempDir, { recursive: true, force: true });
+        } catch {
+          // Best-effort cleanup
+        }
+
+        mkdirSync(tempDir, { recursive: true });
+      }
 
       process.env.NODE_V8_COVERAGE = tempDir;
     },
