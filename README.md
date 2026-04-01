@@ -79,6 +79,7 @@ coverage({
   skipFull: false, // default: false
 
   // Advanced
+  watermarks: { lines: [80, 95], branches: [80, 95] }, // default: c8 defaults
   excludeAfterRemap: false, // default: false
   mergeAsync: false, // default: false
   clean: true, // default: true
