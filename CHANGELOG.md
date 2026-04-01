@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/pokujs/c8/compare/v1.0.1...v1.0.2) (2026-04-01)
+
+
+### Bug Fixes
+
+* apply clean option in standard coverage flow ([#80](https://github.com/pokujs/c8/issues/80)) ([6dbae63](https://github.com/pokujs/c8/commit/6dbae63f4bf1200cbde2361bde464be8496c638d))
+
 ## [1.0.1](https://github.com/pokujs/c8/compare/v1.0.0...v1.0.1) (2026-03-31)
 
 
