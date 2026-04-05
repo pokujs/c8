@@ -31,6 +31,16 @@ type KnownExtension =
 type Extension = KnownExtension | (string & NonNullable<unknown>);
 
 export type CoverageOptions = {
+  /**
+   * Require the `--coverage` CLI flag to activate coverage collection.
+   *
+   * When `true`, coverage only runs if `--coverage` is passed to the CLI.
+   * When `false`, coverage runs whenever the plugin is active.
+   *
+   * @default false
+   */
+  requireFlag?: boolean;
+
   /** Coverage reporters to use. */
   reporter?: Reporter | Reporter[];
 

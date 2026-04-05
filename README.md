@@ -27,7 +27,17 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/wel
 npm i -D @pokujs/c8
 ```
 
-### Enable the Plugin
+### Usage
+
+Run `poku` and a coverage summary will be printed after your test results.
+
+> [!IMPORTANT]
+>
+> This plugin relies on **Node.js**' built-in `NODE_V8_COVERAGE` environment variable to collect coverage data. **Bun** and **Deno** do not support this mechanism, so coverage data will not be collected when running tests with these runtimes.
+
+---
+
+### Customize Plugin
 
 ```js
 // poku.config.js
@@ -39,18 +49,13 @@ export default defineConfig({
 });
 ```
 
-That's it! Run `poku` and a coverage summary will be printed after your test results.
-
-> [!IMPORTANT]
->
-> This plugin relies on **Node.js**' built-in `NODE_V8_COVERAGE` environment variable to collect coverage data. **Bun** and **Deno** do not support this mechanism, so coverage data will not be collected when running tests with these runtimes.
-
----
-
 ## Options
 
 ```js
 coverage({
+  // Activation
+  requireFlag: true, // default: false
+
   // Reporters
   reporter: ['text', 'lcov'], // default: ['text']
 
@@ -139,6 +144,25 @@ coverage({
   extension: ['.ts'],
   all: true,
 });
+```
+
+### Require `--coverage` flag
+
+By default, coverage runs whenever the plugin is active. Use `requireFlag` to only collect coverage when `--coverage` is passed to the CLI, keeping watch mode, debugging, and filtered runs fast:
+
+```js
+coverage({
+  include: ['src/**'],
+  requireFlag: true,
+});
+```
+
+```bash
+# No coverage (plugin is a no-op)
+poku test/
+
+# With coverage
+poku --coverage test/
 ```
 
 ### Extending Monocart reporters
