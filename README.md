@@ -58,7 +58,7 @@ Run `poku` and a coverage summary will be printed after your test results.
 ```js
 coverage({
   // Config file (.c8rc, .c8rc.json, .c8rc.jsonc, .nycrc, .nycrc.json, .nycrc.jsonc)
-  config: '.c8rc', // default: auto-discover — also available as --coverage-config=<path>
+  config: '.c8rc', // default: auto-discover
 
   // Activation
   requireFlag: true, // default: false
