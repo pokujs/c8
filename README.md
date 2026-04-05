@@ -58,12 +58,12 @@ Run `poku` and a coverage summary will be printed after your test results.
 ```js
 coverage({
   // Config file (.c8rc, .c8rc.json, .c8rc.jsonc, .nycrc, .nycrc.json, .nycrc.jsonc)
-  config: '.c8rc', // default: auto-discover
+  config: '.c8rc', // default: auto-discover — also available as --coverage-config=<path>
 
   // Activation
   requireFlag: true, // default: false
 
-  // Reporters (clover, cobertura, codecov, console-details, html, html-spa, json, json-summary, lcov, lcovonly, none, teamcity, text, text-lcov, text-summary, v8)
+  // Reporters (clover, cobertura, html, html-spa, json, json-summary, lcov, lcovonly, none, teamcity, text, text-lcov, text-summary)
   reporter: ['text', 'lcov'], // default: ['text']
 
   // File selection
@@ -193,7 +193,20 @@ coverage({
 });
 ```
 
-When no `config` is specified, the plugin automatically searches for `.c8rc`, `.c8rc.json`, `.c8rc.jsonc`, `.nycrc`, `.nycrc.json`, or `.nycrc.jsonc` in the working directory. Programmatic options always take precedence over file-based config.
+When no `config` is specified, the plugin automatically searches for `.c8rc`, `.c8rc.json`, `.c8rc.jsonc`, `.nycrc`, `.nycrc.json`, or `.nycrc.jsonc` in the working directory.
+
+You can also specify the config path via CLI:
+
+```bash
+poku --coverage-config=.c8rc test/
+```
+
+> [!NOTE]
+>
+> **Priority order:**
+>
+> - For config file discovery: `--coverage-config` (CLI) > `config` (plugin option) > auto-discovery
+> - For coverage options: plugin options > config file options
 
 ### Extending Monocart reporters
 

@@ -23,7 +23,11 @@ export const coverage = (
       if (options.requireFlag && !process.argv.includes('--coverage')) return;
       enabled = true;
 
-      const fileConfig = loadConfig(context.cwd, options.config);
+      const cliConfig = process.argv
+        .find((arg) => arg.startsWith('--coverage-config'))
+        ?.split('=')[1];
+
+      const fileConfig = loadConfig(context.cwd, cliConfig ?? options.config);
       options = { ...fileConfig, ...options };
 
       if (context.runtime !== 'node')
