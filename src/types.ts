@@ -32,6 +32,16 @@ type Extension = KnownExtension | (string & NonNullable<unknown>);
 
 export type CoverageOptions = {
   /**
+   * Path to a JSONC/JSON configuration file.
+   *
+   * - `string` — load that specific file
+   * - `false` — disable config file discovery
+   * - `undefined` (default) — auto-discover `.c8rc`, `.c8rc.json`, `.nycrc`, `.nycrc.json`,
+   *   or a `c8` key in `package.json`, walking up from `cwd`.
+   */
+  config?: string | false;
+
+  /**
    * Require the `--coverage` CLI flag to activate coverage collection.
    *
    * When `true`, coverage only runs if `--coverage` is passed to the CLI.

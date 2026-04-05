@@ -17,6 +17,10 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/wel
 
 ☔️ [**@pokujs/c8**](https://github.com/pokujs/c8) is a **Poku** plugin for **V8** code coverage using [**c8**](https://github.com/bcoe/c8).
 
+> [!TIP]
+>
+> **@pokujs/c8** supports **JSONC** config files (`.c8rc`, `.nycrc`, etc.) out of the box, allowing comments in your configuration. You can also use **JS** and **TS** by setting the options directly in the plugin.
+
 ---
 
 ## Quickstart
@@ -53,10 +57,13 @@ Run `poku` and a coverage summary will be printed after your test results.
 
 ```js
 coverage({
+  // Config file (.c8rc, .c8rc.json, .c8rc.jsonc, .nycrc, .nycrc.json, .nycrc.jsonc)
+  config: '.c8rc', // default: auto-discover
+
   // Activation
   requireFlag: true, // default: false
 
-  // Reporters
+  // Reporters (clover, cobertura, html, html-spa, json, json-summary, lcov, lcovonly, none, teamcity, text, text-lcov, text-summary)
   reporter: ['text', 'lcov'], // default: ['text']
 
   // File selection
@@ -164,6 +171,42 @@ poku test/
 # With coverage
 poku --coverage test/
 ```
+
+### Using a config file
+
+Reuse your existing `.c8rc`, `.nycrc`, or any JSON/JSONC config file with comments:
+
+```jsonc
+// .c8rc
+{
+  // Only cover source files
+  "include": ["src/**"],
+  "reporter": ["text", "lcov"],
+  "check-coverage": true,
+  "lines": 90,
+}
+```
+
+```js
+coverage({
+  config: '.c8rc', // or false to disable auto-discovery
+});
+```
+
+When no `config` is specified, the plugin automatically searches for `.c8rc`, `.c8rc.json`, `.c8rc.jsonc`, `.nycrc`, `.nycrc.json`, or `.nycrc.jsonc` in the working directory.
+
+You can also specify the config path via CLI:
+
+```bash
+poku --coverage-config=.c8rc test/
+```
+
+> [!NOTE]
+>
+> **Priority order:**
+>
+> - For config file discovery: `--coverage-config` (CLI) > `config` (plugin option) > auto-discovery
+> - For coverage options: plugin options > config file options
 
 ### Extending Monocart reporters
 

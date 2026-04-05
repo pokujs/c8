@@ -4,6 +4,7 @@ import { mkdirSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import process from 'node:process';
+import { loadConfig } from './config.js';
 
 export type { CoverageOptions } from './types.js';
 
@@ -21,6 +22,13 @@ export const coverage = (
     setup(context) {
       if (options.requireFlag && !process.argv.includes('--coverage')) return;
       enabled = true;
+
+      const cliConfig = process.argv
+        .find((arg) => arg.startsWith('--coverage-config'))
+        ?.split('=')[1];
+
+      const fileConfig = loadConfig(context.cwd, cliConfig ?? options.config);
+      options = { ...fileConfig, ...options };
 
       if (context.runtime !== 'node')
         console.warn(

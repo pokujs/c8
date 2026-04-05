@@ -1,7 +1,7 @@
-import { defineConfig } from 'poku';
-import { coverage } from '../../../../src/index.ts';
+const { coverage } = require('../../../../lib/index.js');
 
-export default defineConfig({
+/** @type {import('poku').PokuConfig} */
+module.exports = {
   include: ['test/'],
   plugins: [
     coverage({
@@ -10,4 +10,4 @@ export default defineConfig({
       checkCoverage: 100,
     }),
   ],
-});
+};

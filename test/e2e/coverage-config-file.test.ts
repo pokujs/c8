@@ -4,9 +4,9 @@ import { inspectPoku } from 'poku/plugins';
 const fixtureDir = 'test/__fixtures__/e2e';
 const pokuBin = 'node_modules/poku/lib/bin/index.js';
 
-test('basic coverage report is generated', async () => {
+test('loads JSONC config file with comments', async () => {
   const result = await inspectPoku({
-    command: '-c=configs/basic.config.js',
+    command: '-c=configs/config-file.config.js',
     spawnOptions: { cwd: fixtureDir },
     bin: pokuBin,
   });

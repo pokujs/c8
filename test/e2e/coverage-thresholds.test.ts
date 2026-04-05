@@ -6,7 +6,7 @@ const pokuBin = 'node_modules/poku/lib/bin/index.js';
 
 test('threshold check passes with low threshold', async () => {
   const result = await inspectPoku({
-    command: '-c=configs/thresholds-pass.config.ts',
+    command: '-c=configs/thresholds-pass.config.js',
     spawnOptions: { cwd: fixtureDir },
     bin: pokuBin,
   });
@@ -16,7 +16,7 @@ test('threshold check passes with low threshold', async () => {
 
 test('threshold check fails with 100% threshold on partial coverage', async () => {
   const result = await inspectPoku({
-    command: '-c=configs/thresholds-fail.config.ts',
+    command: '-c=configs/thresholds-fail.config.js',
     spawnOptions: { cwd: fixtureDir },
     bin: pokuBin,
   });
