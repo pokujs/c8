@@ -1,0 +1,5 @@
+{
+  // JSONC: comments should be supported
+  "include": ["src/**"],
+  "reporter": ["text"]
+}

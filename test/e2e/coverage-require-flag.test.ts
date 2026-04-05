@@ -6,7 +6,7 @@ const pokuBin = 'node_modules/poku/lib/bin/index.js';
 
 test('coverage is skipped without --coverage flag when requireFlag is true', async () => {
   const result = await inspectPoku({
-    command: '-c=configs/require-flag.config.ts',
+    command: '-c=configs/require-flag.config.js',
     spawnOptions: { cwd: fixtureDir },
     bin: pokuBin,
   });
@@ -20,7 +20,7 @@ test('coverage is skipped without --coverage flag when requireFlag is true', asy
 
 test('coverage runs with --coverage flag when requireFlag is true', async () => {
   const result = await inspectPoku({
-    command: '--coverage -c=configs/require-flag.config.ts',
+    command: '--coverage -c=configs/require-flag.config.js',
     spawnOptions: { cwd: fixtureDir },
     bin: pokuBin,
   });
