@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/pokujs/c8/compare/v1.0.2...v1.1.0) (2026-04-05)
+
+
+### Features
+
+* support dynamic `coverage` flag ([#82](https://github.com/pokujs/c8/issues/82)) ([8c56c7e](https://github.com/pokujs/c8/commit/8c56c7ede7f57851425bef0b7c4f03689ee4a84c))
+* support JSON and JSONC config files ([#84](https://github.com/pokujs/c8/issues/84)) ([ca95b9a](https://github.com/pokujs/c8/commit/ca95b9a324ed6443cd78d56d15405fecc30c69d4))
+
 ## [1.0.2](https://github.com/pokujs/c8/compare/v1.0.1...v1.0.2) (2026-04-01)
 
 
