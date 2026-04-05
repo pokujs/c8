@@ -27,7 +27,9 @@ Enjoying **Poku**? [Give him a star to show your support](https://github.com/wel
 npm i -D @pokujs/c8
 ```
 
-### Enable the Plugin
+### Usage
+
+#### Enable the Plugin
 
 ```js
 // poku.config.js
@@ -39,7 +41,7 @@ export default defineConfig({
 });
 ```
 
-That's it! Run `poku` and a coverage summary will be printed after your test results.
+Run `poku` and a coverage summary will be printed after your test results.
 
 > [!IMPORTANT]
 >
@@ -51,6 +53,9 @@ That's it! Run `poku` and a coverage summary will be printed after your test res
 
 ```js
 coverage({
+  // Activation
+  requireFlag: true, // default: false
+
   // Reporters
   reporter: ['text', 'lcov'], // default: ['text']
 
@@ -139,6 +144,25 @@ coverage({
   extension: ['.ts'],
   all: true,
 });
+```
+
+### Require `--coverage` flag
+
+By default, coverage runs whenever the plugin is active. Use `requireFlag` to only collect coverage when `--coverage` is passed to the CLI, keeping watch mode, debugging, and filtered runs fast:
+
+```js
+coverage({
+  include: ['src/**'],
+  requireFlag: true,
+});
+```
+
+```bash
+# No coverage (plugin is a no-op)
+poku test/
+
+# With coverage
+poku --coverage test/
 ```
 
 ### Extending Monocart reporters

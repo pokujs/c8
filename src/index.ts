@@ -10,6 +10,7 @@ export type { CoverageOptions } from './types.js';
 export const coverage = (
   options: CoverageOptions = Object.create(null)
 ): PokuPlugin => {
+  let enabled = false;
   let tempDir: string;
   let originalEnv: string | undefined;
   let userProvidedTempDir: boolean;
@@ -18,6 +19,9 @@ export const coverage = (
     name: '@pokujs/c8',
 
     setup(context) {
+      if (options.requireFlag && !process.argv.includes('--coverage')) return;
+      enabled = true;
+
       if (context.runtime !== 'node')
         console.warn(
           `[@pokujs/c8] V8 coverage is only supported on Node.js (current runtime: ${context.runtime}). Coverage data may not be collected.`
@@ -44,6 +48,8 @@ export const coverage = (
     },
 
     async teardown(context) {
+      if (!enabled) return;
+
       if (originalEnv !== undefined) process.env.NODE_V8_COVERAGE = originalEnv;
       else delete process.env.NODE_V8_COVERAGE;
 
