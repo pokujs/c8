@@ -29,15 +29,7 @@ npm i -D @pokujs/c8
 
 ### Usage
 
-Run `poku` and a coverage summary will be printed after your test results.
-
-> [!IMPORTANT]
->
-> This plugin relies on **Node.js**' built-in `NODE_V8_COVERAGE` environment variable to collect coverage data. **Bun** and **Deno** do not support this mechanism, so coverage data will not be collected when running tests with these runtimes.
-
----
-
-### Customize Plugin
+#### Enable the Plugin
 
 ```js
 // poku.config.js
@@ -48,6 +40,14 @@ export default defineConfig({
   plugins: [coverage()],
 });
 ```
+
+Run `poku` and a coverage summary will be printed after your test results.
+
+> [!IMPORTANT]
+>
+> This plugin relies on **Node.js**' built-in `NODE_V8_COVERAGE` environment variable to collect coverage data. **Bun** and **Deno** do not support this mechanism, so coverage data will not be collected when running tests with these runtimes.
+
+---
 
 ## Options
 
