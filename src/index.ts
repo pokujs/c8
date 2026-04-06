@@ -24,7 +24,7 @@ export const coverage = (
       enabled = true;
 
       const cliConfig = process.argv
-        .find((arg) => arg.startsWith('--coverage-config'))
+        .find((arg) => arg.startsWith('--coverageConfig'))
         ?.split('=')[1];
 
       const fileConfig = loadConfig(context.cwd, cliConfig ?? options.config);
