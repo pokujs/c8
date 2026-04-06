@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/pokujs/c8/compare/v1.1.0...v1.1.1) (2026-04-06)
+
+
+### Bug Fixes
+
+* fix `--coverageConfig` flag name ([7cab5d4](https://github.com/pokujs/c8/commit/7cab5d46cc446b1b5e375c38df0030f953eb709c))
+
 ## [1.1.0](https://github.com/pokujs/c8/compare/v1.0.2...v1.1.0) (2026-04-05)
 
 
