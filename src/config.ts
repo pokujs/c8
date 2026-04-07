@@ -30,13 +30,10 @@ const getExtension = (filePath: string): string => {
   return filePath.slice(dotIndex);
 };
 
-const parseConfig = (
-  content: string,
-  filePath: string
-): Record<string, unknown> => {
-  if (isToml(filePath)) return tomlParse(content) as Record<string, unknown>;
-  if (isYaml(filePath)) return yamlParse(content) as Record<string, unknown>;
-  return JSONC.parse(content) as Record<string, unknown>;
+const parseConfig = (content: string, filePath: string): CoverageOptions => {
+  if (isToml(filePath)) return tomlParse<CoverageOptions>(content);
+  if (isYaml(filePath)) return yamlParse<CoverageOptions>(content);
+  return JSONC.parse<CoverageOptions>(content);
 };
 
 const kebabMap: Record<string, string> = {
