@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/pokujs/c8/compare/v1.1.1...v1.2.0) (2026-04-08)
+
+
+### Features
+
+* support for YAML and TOML config files ([#86](https://github.com/pokujs/c8/issues/86)) ([8a6ccf5](https://github.com/pokujs/c8/commit/8a6ccf5ffc8ff65d83b3730ab08b8366c4ef575f))
+
 ## [1.1.1](https://github.com/pokujs/c8/compare/v1.1.0...v1.1.1) (2026-04-06)
 
 
