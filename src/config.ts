@@ -2,6 +2,39 @@ import type { CoverageOptions } from './types.js';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { JSONC } from 'jsonc.min';
+import { parse as tomlParse } from 'toml.min';
+import { parse as yamlParse } from 'yaml.min';
+
+const scriptExtensions = new Set([
+  '.js',
+  '.mjs',
+  '.cjs',
+  '.ts',
+  '.mts',
+  '.cts',
+]);
+
+const isScript = (path: string): boolean =>
+  scriptExtensions.has(getExtension(path));
+
+const isToml = (path: string): boolean => getExtension(path) === '.toml';
+
+const isYaml = (path: string): boolean => {
+  const ext = getExtension(path);
+  return ext === '.yml' || ext === '.yaml';
+};
+
+const getExtension = (filePath: string): string => {
+  const dotIndex = filePath.lastIndexOf('.');
+  if (dotIndex === -1) return '';
+  return filePath.slice(dotIndex);
+};
+
+const parseConfig = (content: string, filePath: string): CoverageOptions => {
+  if (isToml(filePath)) return tomlParse<CoverageOptions>(content);
+  if (isYaml(filePath)) return yamlParse<CoverageOptions>(content);
+  return JSONC.parse<CoverageOptions>(content);
+};
 
 const kebabMap: Record<string, string> = {
   'reports-dir': 'reportsDirectory',
@@ -40,12 +73,20 @@ export const loadConfig = (
         '.c8rc',
         '.c8rc.json',
         '.c8rc.jsonc',
+        '.c8rc.toml',
+        '.c8rc.yaml',
+        '.c8rc.yml',
         '.nycrc',
         '.nycrc.json',
         '.nycrc.jsonc',
+        '.nycrc.toml',
+        '.nycrc.yaml',
+        '.nycrc.yml',
       ];
 
   for (const file of expectedFiles) {
+    if (isScript(file)) continue;
+
     const filePath = join(cwd, file);
 
     if (!existsSync(filePath)) continue;
@@ -53,7 +94,7 @@ export const loadConfig = (
     try {
       const content = readFileSync(filePath, 'utf8');
 
-      return mapKeys(JSONC.parse(content) as Record<string, unknown>);
+      return mapKeys(parseConfig(content, file));
     } catch {}
   }
 
