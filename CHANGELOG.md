@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/pokujs/c8/compare/v1.2.0...v2.0.0) (2026-06-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** upgrade c8 from ^10.1.3 to ^11.0.0 ([#90](https://github.com/pokujs/c8/issues/90))
+
+### Miscellaneous Chores
+
+* **deps:** upgrade c8 from ^10.1.3 to ^11.0.0 ([#90](https://github.com/pokujs/c8/issues/90)) ([d69775a](https://github.com/pokujs/c8/commit/d69775a9d1e9419f8250f62d06217768493421fd))
+
 ## [1.2.0](https://github.com/pokujs/c8/compare/v1.1.1...v1.2.0) (2026-04-08)
 
 
