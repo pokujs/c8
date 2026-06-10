@@ -1,6 +1,6 @@
-# CLAUDE.md
+# @pokujs/c8
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+@pokujs/c8 is a [Poku](https://github.com/wellwelwel/poku) plugin for V8 code coverage using [c8](https://github.com/bcoe/c8).
 
 ## Commands
 
