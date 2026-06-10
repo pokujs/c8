@@ -30,7 +30,7 @@ npx tsx <path-to-test-file>
 
 **Tests (`test/`):**
 
-- All tests are e2e, run via `npm test`. Each test uses `inspectPoku()` to spawn a full poku process against a fixture project in `test/__fixtures__/`.
+- Run tests via `npm test`. Each test uses `inspectPoku()` to spawn a full poku process against a fixture project in `test/__fixtures__/`.
 - Fixtures live in `test/__fixtures__/` with their own configs under `configs/` and source under `src/`.
 
 **Config priority (highest to lowest):** `--coverageConfig` CLI flag → `config` plugin option → auto-discovery → c8 defaults. Plugin options always override file config values.
