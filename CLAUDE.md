@@ -20,8 +20,6 @@ node_modules/poku/lib/bin/index.js test/e2e/coverage-basic.test.ts
 
 ## Architecture
 
-This is `@pokujs/c8`, a [Poku](https://poku.io) plugin that wraps [c8](https://github.com/bcoe/c8) to provide V8 code coverage. It implements Poku's `PokuPlugin` interface with two lifecycle hooks.
-
 **Source files (`src/`):**
 
 - `index.ts` — exports the `coverage()` factory. `setup()` creates a temp dir, sets `NODE_V8_COVERAGE`, and merges config. `teardown()` calls c8's `Report` and optionally `checkCoverages`, then cleans up the temp dir.
