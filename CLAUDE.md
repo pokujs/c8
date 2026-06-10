@@ -13,6 +13,7 @@ npm run lint:fix  # auto-fix formatting
 ```
 
 To run a single test file:
+
 ```sh
 node_modules/poku/lib/bin/index.js test/e2e/coverage-basic.test.ts
 ```
@@ -22,6 +23,7 @@ node_modules/poku/lib/bin/index.js test/e2e/coverage-basic.test.ts
 This is `@pokujs/c8`, a [Poku](https://poku.io) plugin that wraps [c8](https://github.com/bcoe/c8) to provide V8 code coverage. It implements Poku's `PokuPlugin` interface with two lifecycle hooks.
 
 **Source files (`src/`):**
+
 - `index.ts` — exports the `coverage()` factory. `setup()` creates a temp dir, sets `NODE_V8_COVERAGE`, and merges config. `teardown()` calls c8's `Report` and optionally `checkCoverages`, then cleans up the temp dir.
 - `config.ts` — `loadConfig()` auto-discovers `.c8rc`/`.nycrc` config files (JSON, JSONC, TOML, YAML). Kebab-case keys from config files are mapped to camelCase `CoverageOptions` fields.
 - `types.ts` — `CoverageOptions` type defining all plugin options.
@@ -29,6 +31,7 @@ This is `@pokujs/c8`, a [Poku](https://poku.io) plugin that wraps [c8](https://g
 **Build output:** TypeScript compiles to `lib/` (Node16 module format, declarations included). Only `lib/` is published.
 
 **Tests (`test/`):**
+
 - All tests are e2e, run via `poku --sequential`. Each test uses `inspectPoku()` to spawn a full poku process against a fixture project in `test/__fixtures__/e2e/`.
 - Fixtures live in `test/__fixtures__/e2e/` with their own configs under `configs/` and source under `src/`.
 
