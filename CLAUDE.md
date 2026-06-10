@@ -15,7 +15,7 @@ npm run lint:fix  # auto-fix formatting
 To run a single test file:
 
 ```sh
-node_modules/poku/lib/bin/index.js test/e2e/coverage-basic.test.ts
+npx tsx <path-to-test-file>
 ```
 
 ## Architecture
@@ -30,9 +30,9 @@ node_modules/poku/lib/bin/index.js test/e2e/coverage-basic.test.ts
 
 **Tests (`test/`):**
 
-- All tests are e2e, run via `poku --sequential`. Each test uses `inspectPoku()` to spawn a full poku process against a fixture project in `test/__fixtures__/e2e/`.
+- All tests are e2e, run via `npm test`. Each test uses `inspectPoku()` to spawn a full poku process against a fixture project in `test/__fixtures__/e2e/`.
 - Fixtures live in `test/__fixtures__/e2e/` with their own configs under `configs/` and source under `src/`.
 
 **Config priority (highest to lowest):** `--coverageConfig` CLI flag → `config` plugin option → auto-discovery → c8 defaults. Plugin options always override file config values.
 
-**Monocart support** is opt-in via `experimental: ['monocart']` and requires the `monocart-coverage-reports` peer dependency.
+**Monocart support** is a c8 experimental feature and requires the `monocart-coverage-reports` optional peer dependency.
