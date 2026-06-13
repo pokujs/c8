@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/pokujs/c8/compare/v2.0.0...v2.0.1) (2026-06-13)
+
+
+### Bug Fixes
+
+* prettier formatting in CLAUDE.md ([99fce81](https://github.com/pokujs/c8/commit/99fce81b58ef4b61afa4a3ab14bf420eea004b52))
+
 ## [2.0.0](https://github.com/pokujs/c8/compare/v1.2.0...v2.0.0) (2026-06-09)
 
 
